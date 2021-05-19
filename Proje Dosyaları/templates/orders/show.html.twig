@@ -1,0 +1,209 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Sipariş Detay{% endblock %}
+
+{% block body %}
+    <style>
+        @media screen and (max-width: 580px) {
+            body {
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 40px;
+            max-width: 800px;
+        }
+
+        .table {
+            margin: 0 0 40px 0;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            display: table;
+        }
+
+        @media screen and (max-width: 580px) {
+            .table {
+                display: block;
+            }
+        }
+
+        .row {
+            display: table-row;
+            background: #fff75a;
+        }
+
+        .row:nth-of-type(odd) {
+            background: #8959A8;
+        }
+
+        .row.header {
+            font-weight: 900;
+            color: #ffffff;
+            background: #3366FF;
+        }
+
+        .row.green {
+            background: #3A3A3A;
+        }
+
+        .row.blue {
+            background: #889199;
+        }
+
+        @media screen and (max-width: 580px) {
+            .row {
+                padding: 14px 0 7px;
+                display: block;
+            }
+
+            .row.header {
+                padding: 0;
+                height: 6px;
+            }
+
+            .row.header .cell {
+                display: none;
+            }
+
+            .row .cell {
+                margin-bottom: 10px;
+            }
+
+            .row .cell:before {
+                margin-bottom: 3px;
+                content: attr(data-title);
+                min-width: 98px;
+                font-size: 10px;
+                line-height: 10px;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #969696;
+                display: block;
+            }
+        }
+
+        .cell {
+            padding: 6px 12px;
+            display: table-cell;
+        }
+
+        @media screen and (max-width: 580px) {
+            .cell {
+                padding: 2px 16px;
+                display: block;
+            }
+        }
+    </style>
+    <link href="{{ asset('admin') }}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <div style="padding:50px;">
+    <table style="font-weight: bolder;font-size: 120%" class="table">
+        <tbody>
+        <tr>
+            <th>Sipariş Kodu</th>
+            <td>{{ order.id }}</td>
+        </tr>
+        <tr>
+            <th>Kullanıcı Kodu</th>
+            <td>{{ order.userid }}</td>
+        </tr>
+        <tr>
+            <th>İsim</th>
+            <td>{{ order.name }}</td>
+        </tr>
+        <tr>
+            <th>Tutar</th>
+            <td>{{ order.amount }}</td>
+        </tr>
+        <tr>
+            <th>Adres</th>
+            <td>{{ order.address }}</td>
+        </tr>
+        <tr>
+            <th>Şehir</th>
+            <td>{{ order.city }}</td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td>{{ order.phone }}</td>
+        </tr>
+        <tr>
+            <th>Teslimat Bilgileri</th>
+            <td>{{ order.shipinfo }}</td>
+        </tr>
+        <tr>
+            <th>Sipariş Durumu</th>
+            <td>{% if order.status == "new" %}
+                    Yeni
+                {% elseif order.status == "accepted" %}
+                    Onaylandı
+                {% elseif order.status == "onshipping" %}
+                    Kargoda
+                {% elseif order.status == "canceled" %}
+                    İptal Edildi
+                {% elseif order.status == "completed" %}
+                    Tamamlandı
+                {% endif %}</td>
+        </tr>
+        {#<tr>#}
+        {#<th>Update_at</th>#}
+        {#<td>{{ order.updateAt ? order.updateAt|date('Y-m-d H:i:s') : '' }}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+        {#<th>Created_at</th>#}
+        {#<td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>#}
+        {#</tr>#}
+        <tr>
+            <th>Not</th>
+            <td>{{ order.note }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div class="table">
+        <div class="row header">
+            <div class="cell">
+                Ürün Adı
+            </div>
+            <div class="cell">
+                Ürün Kodu
+            </div>
+            <div class="cell">
+                Fiyat
+            </div>
+            <div class="cell">
+                Adet
+            </div>
+            <div class="cell">
+                Toplam Fiyat
+            </div>
+        </div>
+        {% for detail in details %}
+            <div class="row">
+                <div class="cell" data-title="Ürün Fiyatı">
+                    <span style="font-weight: bolder ">{{ detail.name }}</span>
+                </div>
+                <div class="cell" data-title="Ürün Adedi">
+                    <span style="font-weight: bolder ">{{ detail.productid }}</span>
+                </div>
+                <div class="cell" data-title="Toplam">
+                    <span style="font-weight: bolder ">{{ detail.price }}</span>
+                </div>
+                <div class="cell" data-title="Toplam">
+                    <span style="font-weight: bolder ">{{ detail.quantity }}</span>
+                </div>
+                <div class="cell" data-title="Occupation">
+                    <span style="font-weight: bolder ">{{ detail.amount }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="contact-form">
+        <a href="{{ path('orders_index') }}"><input type="submit" value="Geri Dön"></a>
+    </div>
+    </div>
+{% endblock %}

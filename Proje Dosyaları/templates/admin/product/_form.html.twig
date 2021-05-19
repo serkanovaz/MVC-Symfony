@@ -1,0 +1,93 @@
+
+<div class="form-panel" method="post">
+    <div class="form" >
+        <form class="cmxform form-horizontal style-form"  method="post" >
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Kategorisi</label>
+                <div class="col-lg-2 col-sm-9">
+                    <select name="product[category_id]"  class=" form-control">
+                        {% if (catname) %}
+                            <option value="{{ product.categoryid }}">{{ catname[0].title }}</option>
+                        {% endif %}
+                        {% for cat in catlist%}
+                            <option value="{{ cat.id }}">{{ cat.title}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Title</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="product[title]" value="{{ product.title}}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Keywords</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="product[keywords]" value="{{ product.keywords}}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Description</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="product[description]" value="{{ product.description}}" type="text">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Alış Fiyatı</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="product[pprice]" value="{{ product.pprice}}" type="text">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Satış Fiyatı</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="product[sprice]" value="{{ product.sprice}}" type="text">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Miktarı</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="product[amount]" value="{{ product.amount}}" type="text">
+                </div>
+            </div>
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Detay</label>
+                <div class="col-lg-10">
+                    <textarea id="editor" name="product[detail]" > {{ product.detail }}</textarea>
+                </div>
+            </div>
+
+            <script>
+                ClassicEditor
+                    .create( document.querySelector( '#editor' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+            </script>
+
+
+
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2 col-sm-3">Aktif Durum</label>
+                <div class="col-lg-2 col-sm-9">
+                    <select name="product[status]" value="{{ product.status}}" class=" form-control">
+                        <option>Aktif</option>
+                        <option>Pasif</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Kaydet</button>
+                   <a href="{{ path('admin_product_index') }}"> <button class="btn btn-theme04" type="button">İptal Et</button></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

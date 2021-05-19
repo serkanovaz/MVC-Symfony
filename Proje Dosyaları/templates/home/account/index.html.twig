@@ -1,0 +1,40 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %} Hesap Bilgileri {% endblock %}
+
+
+    {% block content %}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Kullanıcı Kodu</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>İsim</th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <th>E-Mail Adresi</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Adres</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>Telefon</th>
+                <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+                <th>Şehir</th>
+                <td>{{ user.city }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a style="background:#78CD51;font-weight: bolder;font-size: 120%" class="btn btn-theme03" href="{{ path('home') }}">Geri Dön</a>
+        <a style="background:#000000;font-weight: bolder;font-size: 120%"  class="btn btn-theme04" href="{{ path('home_user_edit', {'id': user.id}) }}">Düzenle</a>
+    {% endblock %}
+
+
+

@@ -1,0 +1,59 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürün Detay{% endblock %}
+
+{% block content %}
+
+<div style="padding:20px" class="content-panel">
+    <h4>Ürün Detayı</h4>
+    <hr>
+<table class="table">
+        <tbody>
+            <tr>
+                <th>Ürün Numarası</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Başlık</th>
+                <td>{{ product.title }}</td>
+            </tr>
+            <tr>
+                <th>Anahtar Kelime</th>
+                <td>{{ product.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Tanımlama</th>
+                <td>{{ product.description }}</td>
+            </tr>
+
+            <tr>
+                <th>Miktar</th>
+                <td>{{ product.amount }}</td>
+            </tr>
+            <tr>
+                <th>Alınan Fiyat</th>
+                <td>{{ product.pprice }}</td>
+            </tr>
+            <tr>
+                <th>Satış Fiyat</th>
+                <td>{{ product.sprice }}</td>
+            </tr>
+            <tr>
+                <th>Resim</th>
+                <td>{{ product.image }}</td>
+            </tr>
+            <tr>
+                <th>Kategori Numarası</th>
+                <td>{{ product.categoryId }}</td>
+            </tr>
+            <tr>
+                <th>Durum</th>
+                <td>{{ product.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_product_index') }}"class="btn btn-theme03">Geri Dön</a>
+
+    </div>
+{% endblock %}

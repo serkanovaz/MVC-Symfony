@@ -1,0 +1,54 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Kategori Ayrıntıları{% endblock %}
+{% block content %}
+<!--main content start-->
+
+        <div class="col-md-12">
+
+            <div class="content-panel">
+                <a style="margin-left:20px" href="{{ path ('admin_category_new') }}" class="btn btn-theme03">Yeni Kategori Ekleme</a>
+                <hr>
+                <table class="table">
+
+        <tbody>
+            <tr>
+                <th>Kategori Numarası</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Parentid</th>
+                <td>{{ category.parentid }}</td>
+            </tr>
+            <tr>
+                <th>Başlık</th>
+                <td>{{ category.title }}</td>
+            </tr>
+            <tr>
+                <th>Anahtar Kelime</th>
+                <td>{{ category.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Tanımlama</th>
+                <td>{{ category.description }}</td>
+            </tr>
+            <tr>
+                <th>Durum</th>
+                <td>{{ category.status }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-theme03" href="{{ path('admin_category_index') }}">Geri Dön</a>
+
+                    <a class="btn btn-theme04" href="{{ path('admin_category_edit', {'id': category.id ,'pid':category.parentid}) }}">Düzenle</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+            </div>
+
+
+        </div>
+
+
+{% endblock %}

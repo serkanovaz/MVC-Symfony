@@ -1,0 +1,62 @@
+<div class="form-panel" method="post">
+    <div class="form" >
+        <form class="cmxform form-horizontal style-form"  method="post" >
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Üst Kategori</label>
+                <div class="col-lg-2 col-sm-9">
+                    <select name="category[parentid]"  class=" form-control">
+                        {% if category.parentid!=0 %}
+                        <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                        {% else %}
+                        <option value="0">Ana Kategori</option>
+                        {% endif %}
+                        <option value="0">Ana Kategori</option>
+                        {% for cat in catlist%}
+                        <option value="{{ cat.id }}">{{ cat.title}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Başlık</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="category[title]" value="{{ category.title}}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Anahtar Kelime</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="category[keywords]" value="{{ category.keywords}}" type="text">
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2">Tanımlama</label>
+                <div class="col-lg-10">
+                    <input class="form-control "  name="category[description]" value="{{ category.description}}" type="text">
+                </div>
+            </div>
+
+
+
+            <div class="form-group ">
+                <label  class="control-label col-lg-2 col-sm-3">Aktif Durum</label>
+                <div class="col-lg-2 col-sm-9">
+                    <select name="category[status]" value="{{ category.status}}" class=" form-control">
+                        <option>Aktif</option>
+                        <option>Pasif</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Kaydet</button>
+                    <a href="{{ path('admin_category_index') }}"><button class="btn btn-theme04" type="button">İptal Et</button></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

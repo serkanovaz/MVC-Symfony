@@ -1,0 +1,16 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Setting{% endblock %}
+
+{% block content %}
+
+
+        {{ include('admin/messages.html.twig') }}
+
+
+
+                {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+{% endblock %}

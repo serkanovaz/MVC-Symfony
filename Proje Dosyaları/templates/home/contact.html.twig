@@ -1,0 +1,91 @@
+{% extends 'frontbase.html.twig' %}
+
+    {% block title %}İletişim {{data[0].title}}{% endblock %}
+    {% block keywords %}{{data[0].keywords}}{% endblock %}
+    {% block description %}{{data[0].description}}{% endblock %}
+
+{% block body %}
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div style="padding:30px" class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col col-lg-5">
+                {{ data[0].contact|raw }}
+                </div>
+                <div class="col col-lg-5">
+                    <div class="contact-form">
+                        <h2 style="text-transform: capitalize;">Bizimle İletişime Geçin</h2>
+
+                        <table class="table">
+                        <form name="messages" method="post">
+                            <tr>
+                                <td>
+                                <div>
+                                    <span><label>Tam Adınız</label></span>
+                                </div>
+                                </td>
+                                <td>
+                                    <div><span><input name="messages[name]" type="text" class="textbox"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <div>
+                                    <span><label>E-mail Adresiniz</label></span>
+                                </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span><input name="messages[email]" type="text" class="textbox"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <span><label>Konu</label></span>
+                                    </div>
+                                </td>
+                                <td>
+                          <div> <span><input name="messages[subject]" type="text" class="textbox"></span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <span><label>Mesajınız</label></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                    <span><textarea name="messages[message]"> </textarea></span> </div>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <span><input type="submit" value="Gönder" class="myButton"></span>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                        </form>
+                        </table>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+
+
+{% endblock %}

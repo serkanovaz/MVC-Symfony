@@ -1,0 +1,28 @@
+<div class="w3l_banner_nav_right">
+    <link href="{{ asset('css') }}/flexslider-slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('css') }}/flexslider-rtl.css" rel="stylesheet" type="text/css" media="all" />
+
+    <div  style="margin-left:15%;width:70%" class="flexslider">
+        <ul class="slides">
+            {% for slider in sliders %}
+            <li>
+                <a href="{{ path('product_detail',{'id':slider.id}) }}">
+                <img height="400" src="{{ asset('uploade') }}/images/{{ slider.image }}" />
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- //flexSlider -->
+</div>
+<div class="clearfix"></div>
+</div>
+<script src="{{ asset('js') }}/jquery.flexslider-slider.js"></script>
+<script>
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "slide"
+        });
+    });
+</script>
+<!-- banner -->
