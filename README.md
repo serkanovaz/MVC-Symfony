@@ -16,7 +16,7 @@ E-Ticaret için tasarlanmış site, PHP'ye ait olan Symfony framework ile aktif 
  * Ürün Sepete Ekleme 
  * Şifre İşlemleri
  * Üye Ekleme/Silme
- * Kullanıcı Ünvan Atama
+ * Kullanıcı Ünvan İşlemleri
  * Kategori İşlemleri
  * Ürün İşlemleri
  * Veri Tabanı İşlemleri
